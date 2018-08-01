@@ -155,7 +155,6 @@ class TroveDataset(utils.Dataset):
                         dtype=np.uint8)
         for i, p in enumerate(info["rect"]):
             # Get indexes of pixels inside the polygon and set them to 1
-            # rr, cc = skimage.draw.polygon(p['all_points_y'], p['all_points_x'])
             rr, cc = skimage.draw.rectangle((p['x'], p['y']), extent=(p['width'],p['height']))
             mask[rr, cc, i] = 1
 

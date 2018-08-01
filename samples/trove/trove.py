@@ -151,11 +151,12 @@ class TroveDataset(utils.Dataset):
         # Convert polygons to a bitmap mask of shape
         # [height, width, instance_count]
         info = self.image_info[image_id]
+        print(info)
         mask = np.zeros([info["height"], info["width"], len(info["rect"])],
                         dtype=np.uint8)
         for i, p in enumerate(info["rect"]):
             # Get indexes of pixels inside the polygon and set them to 1
-            print(p['x'], p['y'], p['width'], p['height'])
+            print(p)
             rr, cc = skimage.draw.rectangle(start=(p['x'], p['y']), extent=(p['width'],p['height']))
             mask[rr, cc, i] = 1
 

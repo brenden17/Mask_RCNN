@@ -151,9 +151,9 @@ class TroveDataset(utils.Dataset):
         # Convert polygons to a bitmap mask of shape
         # [height, width, instance_count]
         info = self.image_info[image_id]
-        mask = np.zeros([info["height"], info["width"], len(info["polygons"])],
+        mask = np.zeros([info["height"], info["width"], len(info["rect"])],
                         dtype=np.uint8)
-        for i, p in enumerate(info["polygons"]):
+        for i, p in enumerate(info["rect"]):
             # Get indexes of pixels inside the polygon and set them to 1
             rr, cc = skimage.draw.polygon(p['all_points_y'], p['all_points_x'])
             mask[rr, cc, i] = 1

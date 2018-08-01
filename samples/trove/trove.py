@@ -152,9 +152,9 @@ class TroveDataset(utils.Dataset):
         # [height, width, instance_count]
         info = self.image_info[image_id]
         print(info)
-        mask = np.zeros([info["height"], info["width"], len(info["polygon"])],
+        mask = np.zeros([info["height"], info["width"], len(info["polygons"])],
                         dtype=np.uint8)
-        for i, p in enumerate(info["polygon"]):
+        for i, p in enumerate(info["polygons"]):
             # Get indexes of pixels inside the polygon and set them to 1
             print(p)
             rr, cc = skimage.draw.rectangle(start=(p['x'], p['y']), extent=(p['width'],p['height']))
